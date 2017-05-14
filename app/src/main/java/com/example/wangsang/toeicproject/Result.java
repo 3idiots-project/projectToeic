@@ -29,8 +29,9 @@ public class Result  extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int score = bundle.getInt("mykey");
+        int length = bundle.getInt("myLength");
 
-        txvScore.setText("Your score: " + score + " out of " + new QuestionAdapter().getQuestions().length );
+        txvScore.setText("Your score: " + score + " out of " + length );
 
         btnTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override

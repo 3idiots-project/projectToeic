@@ -21,6 +21,7 @@ public class ReadingContent extends AppCompatActivity {
     final String DATABASE_NAME ="dbtoeic.db";
     SQLiteDatabase db;
     Cursor cursor;
+    private int mLength =0;
     private int mScore = 0;
     private String mAnswer;
 
@@ -114,6 +115,7 @@ public class ReadingContent extends AppCompatActivity {
         mButtonChoice4.setText(cursor.getString(4));
         mAnswer = cursor.getString(5).trim();
         position++;
+        mLength = cursor.getCount();
     }
 
     public void intentResult(){
@@ -123,6 +125,7 @@ public class ReadingContent extends AppCompatActivity {
             Intent intent = new Intent(ReadingContent.this, Result.class);
             Bundle bundle = new Bundle();
             bundle.putInt("mykey", mScore);
+            bundle.putInt("myLength",mLength);
             intent.putExtras(bundle);
             ReadingContent.this.finish();
             startActivity(intent);
